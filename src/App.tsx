@@ -13,6 +13,7 @@ function App() {
     fromLanguage,
     toLanguage,
     setFromLanguage,
+    setToLanguage,
     interchangeLanguages
   } = useStore()
 
@@ -22,7 +23,10 @@ function App() {
 
       <Row>
         <Col>
-          <LanguageSelector />
+          <LanguageSelector
+            type='from'
+            value={fromLanguage}
+            onChange={setFromLanguage} />
           {fromLanguage}
         </Col>
 
@@ -37,7 +41,10 @@ function App() {
         </Col>
 
         <Col>
-          <LanguageSelector />
+          <LanguageSelector
+            type='to'
+            value={toLanguage}
+            onChange={setToLanguage} />
           {toLanguage}
         </Col>
       </Row>
