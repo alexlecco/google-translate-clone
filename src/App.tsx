@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
 
 import './App.css'
 import { useStore } from './hooks/useStore'
@@ -8,14 +8,19 @@ import { AUTO_LANGUAGE } from './constants'
 import { ArrowsIcon } from './components/Icons'
 import { LanguageSelector } from './components/LanguageSelector'
 import { SectionType } from './types.d'
+import { TextArea } from './components/TextArea'
 
 function App() {
   const {
     fromLanguage,
     toLanguage,
+    fromText,
+    result,
+    interchangeLanguages,
     setFromLanguage,
     setToLanguage,
-    interchangeLanguages
+    setFromText,
+    setResult,
   } = useStore()
 
   return (
@@ -24,17 +29,19 @@ function App() {
 
       <Row>
         <Col xs='auto'>
-          <LanguageSelector
-            type={SectionType.From}
-            value={fromLanguage}
-            onChange={setFromLanguage}
-          />
-          <Form.Control
-            as='textarea'
-            placeholder='Introducir texto'
-            autoFocus
-            style={{ height: '150px' }}
-          />
+          <Stack gap={2}>
+            <LanguageSelector
+              type={SectionType.From}
+              value={fromLanguage}
+              onChange={setFromLanguage}
+            />
+            <TextArea
+              placeholder='Introducir texto'
+              type={SectionType.From}
+              value={fromText}
+              onChange={setFromText}
+            />
+          </Stack>
         </Col>
 
         <Col>
@@ -48,16 +55,19 @@ function App() {
         </Col>
 
         <Col>
-          <LanguageSelector
-            type={SectionType.To}
-            value={toLanguage}
-            onChange={setToLanguage}
-          />
-          <Form.Control
-            as='textarea'
-            placeholder='Traducción'
-            style={{ height: '150px' }}
-          />
+          <Stack gap={2}>
+            <LanguageSelector
+              type={SectionType.To}
+              value={toLanguage}
+              onChange={setToLanguage}
+            />
+            <TextArea
+              placeholder='Traducción'
+              type={SectionType.To}
+              value={result}
+              onChange={setResult}
+            />
+          </Stack>
         </Col>
       </Row>
     </Container>
