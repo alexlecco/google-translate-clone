@@ -36,7 +36,6 @@ function App() {
               onChange={setFromLanguage}
             />
             <TextArea
-              placeholder='Introducir texto'
               type={SectionType.From}
               value={fromText}
               onChange={setFromText}
@@ -44,7 +43,7 @@ function App() {
           </Stack>
         </Col>
 
-        <Col>
+        <Col xs='auto'>
           <Button
             variant='link'
             disabled={fromLanguage === AUTO_LANGUAGE}
@@ -62,7 +61,6 @@ function App() {
               onChange={setToLanguage}
             />
             <TextArea
-              placeholder='Traducción'
               type={SectionType.To}
               value={result}
               onChange={setResult}
