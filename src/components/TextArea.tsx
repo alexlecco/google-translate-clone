@@ -21,6 +21,10 @@ export const TextArea = ({ type, loading, value, onChange }: Props) => {
     ? commonStyles
     : { ...commonStyles, backgroundColor: '#f5f5f5'}
 
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value)
+  }
+
   return (
     <Form.Control
       autoFocus={type === SectionType.From}
@@ -28,6 +32,7 @@ export const TextArea = ({ type, loading, value, onChange }: Props) => {
       placeholder={getPlaceholder({ type, loading })}
       style={styles}
       value={value}
+      onChange={handleChange}
     />
-  )
+  ) 
 }
