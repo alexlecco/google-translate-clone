@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 
 import './App.css'
 import { useStore } from './hooks/useStore'
@@ -23,12 +23,18 @@ function App() {
       <h1>Google Translate</h1>
 
       <Row>
-        <Col>
+        <Col xs='auto'>
           <LanguageSelector
             type={SectionType.From}
             value={fromLanguage}
-            onChange={setFromLanguage} />
-          {fromLanguage}
+            onChange={setFromLanguage}
+          />
+          <Form.Control
+            as='textarea'
+            placeholder='Introducir texto'
+            autoFocus
+            style={{ height: '150px' }}
+          />
         </Col>
 
         <Col>
@@ -45,8 +51,13 @@ function App() {
           <LanguageSelector
             type={SectionType.To}
             value={toLanguage}
-            onChange={setToLanguage} />
-          {toLanguage}
+            onChange={setToLanguage}
+          />
+          <Form.Control
+            as='textarea'
+            placeholder='Traducción'
+            style={{ height: '150px' }}
+          />
         </Col>
       </Row>
     </Container>
